@@ -15,7 +15,8 @@ datamining = ["Student visibly uncomfortable",
                  "Flies through slides like Shree",
                  "Ignores irrelevant question",
                  "Laptop battery warning",
-                 "Displays breadth of knowledge"]
+                 "Displays breadth of knowledge",
+                 "[WILD CARD]"]
 
 nonlinear = ["Is everyone finished? (No response)",
                 "Blue checkered shirt + blazer",
@@ -29,7 +30,8 @@ nonlinear = ["Is everyone finished? (No response)",
                 "Any questions? (nervous silence)",
                 "Same person answers 4+ questions",
                 "Leaves material for TA",
-                "The answer to the question is on the slide"]
+                "The answer to the question is on the slide",
+                "[WILD CARD]"]
 
 winterclasses = {1: datamining, 2: nonlinear}
 
