@@ -6,19 +6,19 @@ import random
 from colorclass import Color, Windows
 from terminaltables import SingleTable
 
-
 datamining = ["Student visibly uncomfortable", 
                  "Calls out someone for using buzzwords",
-                 "Casually over-runs class",
+                 "Still teaching at 4:31",
                  "Thats not interesting",
                  "Jab at B school",
-                 "Flies through slides like Shree",
+                 "Flies through slides like Shree did",
                  "Ignores irrelevant question",
                  "Laptop battery warning",
-                 "Displays breadth of knowledge",
+                 "Flexes with breadth of knowledge",
+                 "[WILD CARD]",
                  "[WILD CARD]"]
 
-nonlinear = ["Is everyone finished? (No response)",
+nonlinear = ["Is everyone finished? (no response)",
                 "Blue checkered shirt + blazer",
                 "Dataset where columns are flipped",
                 "Yuri tells joke but doesnt smile",
@@ -26,21 +26,27 @@ nonlinear = ["Is everyone finished? (No response)",
                 ">5s pause where no one answers Yuris question",
                 "Financial example",
                 "Entire hour of confusion",
-                "Does not complete workshop",
+                "ANOVA triangle",
+                "Doesnt complete workshop",
                 "Any questions? (nervous silence)",
                 "Same person answers 4+ questions",
                 "Leaves material for TA",
                 "The answer to the question is on the slide",
+                "[WILD CARD]",
                 "[WILD CARD]"]
 
 winterclasses = {1: datamining, 2: nonlinear}
+print("\n\n")
 
-print("\n********************************************************************")
-print("*********************** 25 cents Class Bingo ***********************")
-print("********************************************************************\n")
-
+print("██████╗  ██████╗ ██╗     ██╗      █████╗ ██████╗     ██████╗ ██╗███╗   ██╗ ██████╗  ██████╗ ")
+print("██╔══██╗██╔═══██╗██║     ██║     ██╔══██╗██╔══██╗    ██╔══██╗██║████╗  ██║██╔════╝ ██╔═══██╗")
+print("██║  ██║██║   ██║██║     ██║     ███████║██████╔╝    ██████╔╝██║██╔██╗ ██║██║  ███╗██║   ██║")
+print("██║  ██║██║   ██║██║     ██║     ██╔══██║██╔══██╗    ██╔══██╗██║██║╚██╗██║██║   ██║██║   ██║")
+print("██████╔╝╚██████╔╝███████╗███████╗██║  ██║██║  ██║    ██████╔╝██║██║ ╚████║╚██████╔╝╚██████╔╝")
+print("╚═════╝  ╚═════╝ ╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝    ╚═════╝ ╚═╝╚═╝  ╚═══╝ ╚═════╝  ╚═════╝ ")
+                                                                                            
 def bingo():
-    course = input("For which course would you like to play Bingo? Enter 1 for Data Mining, 2 for Non-linear:  ")
+    course = input("\nFor which course would you like to play Bingo? Enter 1 for Data Mining, 2 for Non-linear. Enter QUIT to leave the application:  ")
     if course.isdigit() and int(course) in winterclasses: 
         dim = math.floor(math.sqrt(len(winterclasses[int(course)])))
         df = pd.DataFrame(data = np.random.choice(winterclasses[int(course)], dim**2, replace=False))
@@ -55,11 +61,12 @@ def bingo():
         table_instance = SingleTable(grid)
         table_instance.inner_heading_row_border = False
         table_instance.inner_row_border = True
-        table_instance.justify_columns = {0: 'center', 1: 'center', 2: 'center'}
+        table_instance.justify_columns = {0: 'center', 1: 'center', 2: 'center', 3: 'center', 4: 'center', 5: 'center'}
+        print("\n")
         print(table_instance.table) 
         
         while True:
-            action = input("Enter item number which you hit. Enter RESTART for a new board. Enter QUIT to leave the application:  ")
+            action = input("\nEnter item number which you hit. Enter RESET to clear the board, RESTART for a new board, and QUIT to leave the application:  ")
             
             if action.isdigit() and int(action) in df['id'].values:
                 df.loc[df.id == int(action), "hit"] = df.loc[df.id == int(action), "hit"].replace({0:1, 1:0})
@@ -71,19 +78,21 @@ def bingo():
                 table_instance = SingleTable(grid)
                 table_instance.inner_heading_row_border = False
                 table_instance.inner_row_border = True
-                table_instance.justify_columns = {0: 'center', 1: 'center', 2: 'center'}
+                table_instance.justify_columns = {0: 'center', 1: 'center', 2: 'center', 3: 'center', 4: 'center', 5: 'center'}
+                print("\n")
                 print(table_instance.table) 
                 continue
                 
-            # elif action == "RESET":
-                # df["id"] = 0
-                # df['output'] = "Color('{}" + df["element"].astype(str) + """{}'.format("{autoyellow}", "{/autoyellow}"))"""
-                # array = df["output"].tolist()
-                # array = [eval(x) for x in array]
-                # grid = [array[i:i+dim] for i in range(0, len(array), dim)]
-                # table_instance = SingleTable(grid)
-                # print(table_instance.table) 
-                # continue
+            elif action == "RESET":
+                df["hit"] = 0
+                df['output'] = "Color('{}" + df["element"].astype(str) + """{}'.format("{autoyellow}", "{/autoyellow}"))"""
+                array = df["output"].tolist()
+                array = [eval(x) for x in array]
+                grid = [array[i:i+dim] for i in range(0, len(array), dim)]
+                table_instance = SingleTable(grid)
+                print("\n")
+                print(table_instance.table) 
+                continue
                 
             elif action == "RESTART":
                 break
@@ -97,6 +106,9 @@ def bingo():
         
         bingo()
         
+    elif course == "QUIT":
+        sys.exit(0)
+
     else:
         print("Sorry, what you entered was not in range. ")
         bingo()

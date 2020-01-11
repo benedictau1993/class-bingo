@@ -1,6 +1,6 @@
 ## Let's play Bingo!
 
-This is a bingo sheet generator for the Terminal.
+This is a bingo sheet generator for the Terminal, rather than IPython. It is written in Python 3. 
 
 #### Package requirements
 - numpy
