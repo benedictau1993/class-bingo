@@ -35,15 +35,15 @@ nonlinear = ["Is everyone finished? (No response)",
 
 winterclasses = {1: datamining, 2: nonlinear}
 
-def bingo():
-    print("\n**********************************")
-    print("****** 25 cents Class Bingo ******")
-    print("********************************** \n")
+print("\n********************************************************************")
+print("*********************** 25 cents Class Bingo ***********************")
+print("********************************************************************\n")
 
-    course = int(input("For which course would you like to play Bingo? Enter 1 for Data Mining, 2 for Non-linear:  "))
-    if course in winterclasses: 
-        dim = math.floor(math.sqrt(len(winterclasses[course])))
-        df = pd.DataFrame(data = np.random.choice(winterclasses[course], dim**2, replace=False))
+def bingo():
+    course = input("For which course would you like to play Bingo? Enter 1 for Data Mining, 2 for Non-linear:  ")
+    if course.isdigit() and int(course) in winterclasses: 
+        dim = math.floor(math.sqrt(len(winterclasses[int(course)])))
+        df = pd.DataFrame(data = np.random.choice(winterclasses[int(course)], dim**2, replace=False))
         df.rename(columns={0: "element"}, inplace = True)
         df["id"] = range(1,dim**2+1)
         df["element"] = df["id"].map(str) + ". " +  df["element"].map(str)
@@ -92,13 +92,13 @@ def bingo():
             	sys.exit(0)
 
             else:
-                print("Sorry, what you entered is not in range. \nEnter item number which you hit. Enter RESTART for a new board. Enter QUIT to leave the application:  ")
+                print("Sorry, what you entered was not in range.")
                 continue
         
         bingo()
         
     else:
-        print("You must enter a number:  ")
+        print("Sorry, what you entered was not in range. ")
         bingo()
 
 def main():
