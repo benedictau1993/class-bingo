@@ -7,7 +7,7 @@ import random
 from colorclass import Color, Windows
 from terminaltables import SingleTable
 
-datamining = ["Student visibly uncomfortable", 
+datamining = ("Student visibly uncomfortable", 
 				 "Calls out someone for using buzzwords",
 				 "Still teaching at 4:31",
 				 "Thats not interesting",
@@ -16,9 +16,9 @@ datamining = ["Student visibly uncomfortable",
 				 "Ignores irrelevant question",
 				 "Laptop battery warning",
 				 "Flexes with breadth of knowledge",
-				 "[WILD CARD]"]
+				 "[WILD CARD]")
 
-nonlinear = ["Is everyone finished? (no response)",
+nonlinear = ("Is everyone finished? (no response)",
 				"Blue checkered shirt + blazer",
 				"Dataset where columns are flipped",
 				"Yuri tells joke but doesnt smile",
@@ -33,7 +33,7 @@ nonlinear = ["Is everyone finished? (no response)",
 				"Leaves material for TA",
 				"The answer to the question is on the slide",
 				"[WILD CARD]",
-				"[WILD CARD]"]
+				"[WILD CARD]")
 
 winterclasses = {1: datamining, 2: nonlinear}
 
@@ -49,6 +49,9 @@ def printtitle():
 def bingo():
 	os.system('cls' if os.name == 'nt' else 'clear')
 	printtitle()
+	input("\n\n\n\n               Make sure your terminal console resolution is greater than 180 x 30. Press ENTER to continue... ")
+	os.system('cls' if os.name == 'nt' else 'clear')
+	printtitle()	
 	course = input("\nFor which course would you like to play Bingo? Enter 1 for Data Mining, 2 for Non-linear. Enter QUIT to leave the application:  ")
 	if course.isdigit() and int(course) in winterclasses: 
 		dim = math.floor(math.sqrt(len(winterclasses[int(course)])))	# dimension of the bingo board
@@ -57,7 +60,9 @@ def bingo():
 		df["id"] = range(1,dim**2+1)	# assigns unique id to each item on bingo board
 		df["element"] = df["id"].map(str) + ". " +  df["element"].map(str)	# appends unique id each item
 		df["hit"] = 0	# binary vector that stores whether the item has been hit
-		df['output'] = "Color('{}" + df["element"].astype(str) + """{}'.format("{autoblue}", "{/autoblue}"))"""		# column that holds the Color() object as string
+		df['output'] = "Color('{}" + df["element"].astype(str) + """{}'.format("{autoblack}", "{/autoblack}"))"""		# column that holds the Color() object as string
+		df.loc[df["element"].str.contains("WILD CARD"), 'hit'] = 1	# auto hit WILD CARDs
+		df.loc[df.hit == 1,'output'] = "Color('{}" + df.loc[df.hit == 1, "element"].astype(str) + """{}'.format("{autogreen}", "{/autogreen}"))"""	# any item that has been hit is showed in green
 		array = df["output"].tolist()
 		array = [eval(x) for x in array]	# converts "Color()" to a Color()
 		grid = [array[i:i+dim] for i in range(0, len(array), dim)]	# turn 1D Python (base Python, not NumPy) list to 2D list
@@ -65,6 +70,8 @@ def bingo():
 		table_instance.inner_heading_row_border = False
 		table_instance.inner_row_border = True
 		table_instance.justify_columns = {0: 'center', 1: 'center', 2: 'center', 3: 'center', 4: 'center', 5: 'center'}
+		os.system('cls' if os.name == 'nt' else 'clear')
+		printtitle()
 		print("\n")
 		print(table_instance.table) 
 		
@@ -75,8 +82,9 @@ def bingo():
 				os.system('cls' if os.name == 'nt' else 'clear')
 				printtitle()
 				df.loc[df.id == int(action), "hit"] = df.loc[df.id == int(action), "hit"].replace({0:1, 1:0})	# switches 0 <-> 1 if item has been hit/unhit
-				df['output'] = "Color('{}" + df["element"].astype(str) + """{}'.format("{autoblue}", "{/autoblue}"))"""		# any item that hasn't been hit is showed in blue
-				df.loc[df.hit == 1,'output'] = "Color('{}" + df.loc[df.hit == 1, "element"].astype(str) + """{}'.format("{autogreen}", "{/autogreen}"))"""				# any item that has been hit is showed in blue
+				df['output'] = "Color('{}" + df["element"].astype(str) + """{}'.format("{autoblack}", "{/autoblack}"))"""		# any item that hasn't been hit is showed in blue
+				df.loc[df["element"].str.contains("WILD CARD"), 'hit'] = 1	# auto hit WILD CARDs
+				df.loc[df.hit == 1,'output'] = "Color('{}" + df.loc[df.hit == 1, "element"].astype(str) + """{}'.format("{autogreen}", "{/autogreen}"))"""				# any item that has been hit is showed in green
 				array = df["output"].tolist()
 				array = [eval(x) for x in array]
 				grid = [array[i:i+dim] for i in range(0, len(array), dim)]
@@ -92,7 +100,9 @@ def bingo():
 				os.system('cls' if os.name == 'nt' else 'clear')
 				printtitle()
 				df["hit"] = 0	# resets hit vector to zeros
-				df['output'] = "Color('{}" + df["element"].astype(str) + """{}'.format("{autoblue}", "{/autoblue}"))"""		# hence all items should be in blue
+				df.loc[df["element"].str.contains("WILD CARD"), 'hit'] = 1	# auto hit WILD CARDs
+				df['output'] = "Color('{}" + df["element"].astype(str) + """{}'.format("{autoblack}", "{/autoblack}"))"""		# hence all items should be in blue
+				df.loc[df.hit == 1,'output'] = "Color('{}" + df.loc[df.hit == 1, "element"].astype(str) + """{}'.format("{autogreen}", "{/autogreen}"))"""	# any item that has been hit is showed in green
 				array = df["output"].tolist()
 				array = [eval(x) for x in array]
 				grid = [array[i:i+dim] for i in range(0, len(array), dim)]
