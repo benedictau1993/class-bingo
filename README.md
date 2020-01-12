@@ -1,8 +1,10 @@
 ## Let's play Bingo!
+##### Benedict Au | Jan 2020
 
-This is a bingo sheet generator for the Terminal, rather than IPython. It is written in Python 3.
+This is a bingo board generator for the Terminal, rather than IPython. It is written in Python 3.
 
-#### Package requirements
+#### Program requirements
+Pip install the following:
 - numpy
 - pandas
 - random
@@ -10,8 +12,9 @@ This is a bingo sheet generator for the Terminal, rather than IPython. It is wri
 - terminaltables
 
 #### Future developments:
-- add Python `curses sc\rc` functionality to overwrite previous bingo sheets instead of printing a new sheet below
-- integration with Google Sheets with Google API
-- logic when Bingo
-- special effects when Bingo
-- interaction with other Bingo players
+- ~~Add Python `curses` window functionality to overwrite previous bingo board instead of printing a new board below every time the board is refreshed~~  
+  Simplistic solution: use `os.system()` to clear screen instead of creating a `curses` window. Made compatible with both Unix and Windows systems.
+- Integration with Google Sheets with Google API
+- Logic when Bingo
+- Special effects when Bingo
+- Interaction with other Bingo players
