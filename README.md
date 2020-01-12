@@ -14,8 +14,8 @@ The program also requires the following dependencies:
 - terminaltables
 
 #### Future developments:
-- ~~Add Python `curses` window functionality to overwrite previous bingo board instead of printing a new board below every time the board is refreshed~~  
-  Simplistic solution: use `os.system()` to clear screen instead of creating a `curses` window. Made compatible with both Unix and Windows systems.
+- ~~Add Python `curses` window functionality to overwrite previous bingo board instead of printing a new board below every time the board is refreshed~~ Workaround done: use `os.system()` to clear screen instead of creating a `curses` window. Made compatible with both Unix and Windows systems.
+- ~~Auto hit wild cards~~ Done
 - Integration with Google Sheets with Google API
 - Logic when Bingo
 - Special effects when Bingo
