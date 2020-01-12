@@ -4,7 +4,9 @@
 This is a bingo board generator for the Terminal, rather than IPython. It is written in Python 3.
 
 #### Program requirements
-Pip install the following:
+
+Terminal resolution: at least 180 char across.
+The program also requires the following dependencies:
 - numpy
 - pandas
 - random
