@@ -6,6 +6,8 @@ import pandas as pd
 import random
 from colorclass import Color, Windows
 from terminaltables import SingleTable
+from termcolor import colored, cprint
+
 
 datamining = ("Student visibly uncomfortable", 
 				 "Calls out someone for using buzzwords",
@@ -37,24 +39,44 @@ nonlinear = ("Is everyone finished? (no response)",
 
 winterclasses = {1: datamining, 2: nonlinear}
 
+bingo3 = ({1,2,3}, {4,5,6}, {7,8,9}, {1,4,7}, {2,5,8}, {3,6,9}, {1,5,9}, {3,5,7})
+bingo4 = ({1,2,3,4}, {5,6,7,8}, {9,10,11,12}, {13,14,15,16}, {1,5,9,13}, {2,6,10,14}, {3,7,11,15}, {4,8,12,16})
+
+colors = ("autoblack", "autored", "autogreen", "autoyellow", "autoblue", "automagenta", "autocyan", "autowhite")
+randcolor = random.choice(colors)
+
 def printtitle():
+	print("\n\n\n\n\n")
+	print(Color('{}              ██████╗  ██████╗ ██╗     ██╗      █████╗ ██████╗     ██████╗ ██╗███╗   ██╗ ██████╗  ██████╗ {}'.format("{"+randcolor+"}", "{/"+randcolor+"}")))
+	print(Color('{}              ██╔══██╗██╔═══██╗██║     ██║     ██╔══██╗██╔══██╗    ██╔══██╗██║████╗  ██║██╔════╝ ██╔═══██╗{}'.format("{"+randcolor+"}", "{/"+randcolor+"}")))
+	print(Color('{}              ██║  ██║██║   ██║██║     ██║     ███████║██████╔╝    ██████╔╝██║██╔██╗ ██║██║  ███╗██║   ██║{}'.format("{"+randcolor+"}", "{/"+randcolor+"}")))
+	print(Color('{}              ██║  ██║██║   ██║██║     ██║     ██╔══██║██╔══██╗    ██╔══██╗██║██║╚██╗██║██║   ██║██║   ██║{}'.format("{"+randcolor+"}", "{/"+randcolor+"}")))
+	print(Color('{}              ██████╔╝╚██████╔╝███████╗███████╗██║  ██║██║  ██║    ██████╔╝██║██║ ╚████║╚██████╔╝╚██████╔╝{}'.format("{"+randcolor+"}", "{/"+randcolor+"}")))
+	print(Color('{}              ╚═════╝  ╚═════╝ ╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝    ╚═════╝ ╚═╝╚═╝  ╚═══╝ ╚═════╝  ╚═════╝ {}'.format("{"+randcolor+"}", "{/"+randcolor+"}")))
+
+def printbingo():	# cprint allows flashing text in most UNIX terminals, but not Windows
 	print("\n")
-	print(Color('{yellow}                 ██████╗  ██████╗ ██╗     ██╗      █████╗ ██████╗     ██████╗ ██╗███╗   ██╗ ██████╗  ██████╗ {/yellow}'))
-	print(Color('{yellow}                 ██╔══██╗██╔═══██╗██║     ██║     ██╔══██╗██╔══██╗    ██╔══██╗██║████╗  ██║██╔════╝ ██╔═══██╗{/yellow}'))
-	print(Color('{yellow}                 ██║  ██║██║   ██║██║     ██║     ███████║██████╔╝    ██████╔╝██║██╔██╗ ██║██║  ███╗██║   ██║{/yellow}'))
-	print(Color('{yellow}                 ██║  ██║██║   ██║██║     ██║     ██╔══██║██╔══██╗    ██╔══██╗██║██║╚██╗██║██║   ██║██║   ██║{/yellow}'))
-	print(Color('{yellow}                 ██████╔╝╚██████╔╝███████╗███████╗██║  ██║██║  ██║    ██████╔╝██║██║ ╚████║╚██████╔╝╚██████╔╝{/yellow}'))
-	print(Color('{yellow}                 ╚═════╝  ╚═════╝ ╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝    ╚═════╝ ╚═╝╚═╝  ╚═══╝ ╚═════╝  ╚═════╝ {/yellow}'))
-																			
+	cprint('                                   ╔═════════════════════════════════════════════════╗', 'yellow', attrs = ['blink'])
+	cprint('                                   ║                                                 ║', 'yellow', attrs = ['blink'])
+	cprint('                                   ║  ██████╗ ██╗███╗   ██╗ ██████╗  ██████╗ ██╗██╗  ║', 'yellow', attrs = ['blink'])
+	cprint('                                   ║  ██╔══██╗██║████╗  ██║██╔════╝ ██╔═══██╗██║██║  ║', 'yellow', attrs = ['blink'])
+	cprint('                                   ║  ██████╔╝██║██╔██╗ ██║██║  ███╗██║   ██║██║██║  ║', 'yellow', attrs = ['blink'])
+	cprint('                                   ║  ██╔══██╗██║██║╚██╗██║██║   ██║██║   ██║╚═╝╚═╝  ║', 'yellow', attrs = ['blink'])
+	cprint('                                   ║  ██████╔╝██║██║ ╚████║╚██████╔╝╚██████╔╝██╗██╗  ║', 'yellow', attrs = ['blink'])
+	cprint('                                   ║  ╚═════╝ ╚═╝╚═╝  ╚═══╝ ╚═════╝  ╚═════╝ ╚═╝╚═╝  ║', 'yellow', attrs = ['blink'])
+	cprint('                                   ║                                                 ║', 'yellow', attrs = ['blink'])
+	cprint('                                   ╚═════════════════════════════════════════════════╝', 'yellow', attrs = ['blink'])
+
+
 def bingo():
 	os.system('cls' if os.name == 'nt' else 'clear')
 	printtitle()
-	input("\n\n\n\n               Make sure your terminal console resolution is greater than 180 x 30. Press ENTER to continue... ")
+	input("\n\n\n\n            Make sure your terminal console resolution is greater than 180 x 30. Press ENTER to continue... ")
 	os.system('cls' if os.name == 'nt' else 'clear')
 	printtitle()	
-	course = input("\nFor which course would you like to play Bingo? Enter 1 for Data Mining, 2 for Non-linear. Enter QUIT to leave the application:  ")
+	course = input("\n\n\n\nFor which course would you like to play Bingo? Enter 1 for Data Mining, 2 for Non-linear. Enter QUIT to leave the application:  ")
 	if course.isdigit() and int(course) in winterclasses: 
-		dim = math.floor(math.sqrt(len(winterclasses[int(course)])))	# dimension of the bingo board
+		dim = min(math.floor(math.sqrt(len(winterclasses[int(course)]))), 4)	# dimension of the bingo board, maximum is 4x4
 		df = pd.DataFrame(data = np.random.choice(winterclasses[int(course)], dim**2, replace=False))	# random draw without replacement from list above
 		df.rename(columns={0: "element"}, inplace = True)
 		df["id"] = range(1,dim**2+1)	# assigns unique id to each item on bingo board
@@ -76,8 +98,8 @@ def bingo():
 		print(table_instance.table) 
 		
 		while True:
-			action = input("\nEnter item number which you hit. Enter RESET to clear the board, RESTART for a new board, and QUIT to leave the application:  ")
-			
+			action = input("\n\nEnter item number which you hit. Enter RESET to clear the board, RESTART for a new board, and QUIT to leave the application:  ")
+
 			if action.isdigit() and int(action) in df['id'].values:
 				os.system('cls' if os.name == 'nt' else 'clear')
 				printtitle()
@@ -93,8 +115,16 @@ def bingo():
 				table_instance.inner_row_border = True
 				table_instance.justify_columns = {0: 'center', 1: 'center', 2: 'center', 3: 'center', 4: 'center', 5: 'center'}
 				print("\n")
-				print(table_instance.table) 
-				continue
+				print(table_instance.table)
+
+				if dim == 3 and any([set(i).issubset(set(df[df['hit']==1]["id"].tolist())) for i in bingo3]):	# if Bingo then print flashing bingo message
+					printbingo()
+
+				elif dim == 4 and any([set(i).issubset(set(df[df['hit']==1]["id"].tolist())) for i in bingo4]):
+					printbingo()
+
+				else:
+					continue
 				
 			elif action == "RESET":
 				os.system('cls' if os.name == 'nt' else 'clear')
