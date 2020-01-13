@@ -4,6 +4,7 @@ import math
 import numpy as np
 import pandas as pd
 import random
+import subprocess
 from colorclass import Color, Windows
 from terminaltables import SingleTable
 from termcolor import colored, cprint
@@ -45,7 +46,20 @@ bingo4 = ({1,2,3,4}, {5,6,7,8}, {9,10,11,12}, {13,14,15,16}, {1,5,9,13}, {2,6,10
 colors = ("autoblack", "autored", "autogreen", "autoyellow", "autoblue", "automagenta", "autocyan", "autowhite")
 randcolor = random.choice(colors)
 
-def printtitle():
+def resolutioncheck():	# grabs console width and checks if width > 180
+	while int(subprocess.Popen(["tput", "cols"], stdout=subprocess.PIPE).communicate()[0]) < 180:
+		print("\n\n")
+		print("****************************************")
+		print("************* DOLLAR BINGO *************")
+		print("****************************************")
+		print("\nThe width of your current console is",int(subprocess.Popen(["tput", "cols"], stdout=subprocess.PIPE).communicate()[0]))
+		print("which is less than the recommended 180.")
+		print("Please adjust your console and press ENTER.\n\n")
+		input("Press ENTER to continue... ")
+		os.system('cls' if os.name == 'nt' else 'clear')
+
+
+def printtitle():	# prints in random color from list
 	print("\n\n\n\n\n")
 	print(Color('{}              ██████╗  ██████╗ ██╗     ██╗      █████╗ ██████╗     ██████╗ ██╗███╗   ██╗ ██████╗  ██████╗ {}'.format("{"+randcolor+"}", "{/"+randcolor+"}")))
 	print(Color('{}              ██╔══██╗██╔═══██╗██║     ██║     ██╔══██╗██╔══██╗    ██╔══██╗██║████╗  ██║██╔════╝ ██╔═══██╗{}'.format("{"+randcolor+"}", "{/"+randcolor+"}")))
@@ -67,12 +81,13 @@ def printbingo():	# cprint allows flashing text in most UNIX terminals, but not 
 	cprint('                                   ║                                                 ║', 'yellow', attrs = ['blink'])
 	cprint('                                   ╚═════════════════════════════════════════════════╝', 'yellow', attrs = ['blink'])
 
-
 def bingo():
 	os.system('cls' if os.name == 'nt' else 'clear')
+	resolutioncheck()
 	printtitle()
-	input("\n\n\n\n            Make sure your terminal console resolution is greater than 180 x 30. Press ENTER to continue... ")
+	input("\n\n\n\n                                                   Press ENTER to continue... ")
 	os.system('cls' if os.name == 'nt' else 'clear')
+	resolutioncheck()
 	printtitle()	
 	course = input("\n\n\n\nFor which course would you like to play Bingo? Enter 1 for Data Mining, 2 for Non-linear. Enter QUIT to leave the application:  ")
 	if course.isdigit() and int(course) in winterclasses: 
@@ -91,8 +106,9 @@ def bingo():
 		table_instance = SingleTable(grid, "Data Mining" if int(course)==1 else "Non-linear" if int(course)==2 else "")		# adds class name to top left of bingo board
 		table_instance.inner_heading_row_border = False
 		table_instance.inner_row_border = True
-		table_instance.justify_columns = {0: 'center', 1: 'center', 2: 'center', 3: 'center', 4: 'center', 5: 'center'}
+		table_instance.justify_columns = {0: 'center', 1: 'center', 2: 'center', 3: 'center', 4: 'center'}
 		os.system('cls' if os.name == 'nt' else 'clear')
+		resolutioncheck()
 		printtitle()
 		print("\n")
 		print(table_instance.table) 
@@ -102,6 +118,7 @@ def bingo():
 
 			if action.isdigit() and int(action) in df['id'].values:
 				os.system('cls' if os.name == 'nt' else 'clear')
+				resolutioncheck()
 				printtitle()
 				df.loc[df.id == int(action), "hit"] = df.loc[df.id == int(action), "hit"].replace({0:1, 1:0})	# switches 0 <-> 1 if item has been hit/unhit
 				df['output'] = "Color('{}" + df["element"].astype(str) + """{}'.format("{autoblack}", "{/autoblack}"))"""		# any item that hasn't been hit is showed in blue
@@ -113,7 +130,7 @@ def bingo():
 				table_instance = SingleTable(grid, "Data Mining" if int(course)==1 else "Non-linear" if int(course)==2 else "")
 				table_instance.inner_heading_row_border = False
 				table_instance.inner_row_border = True
-				table_instance.justify_columns = {0: 'center', 1: 'center', 2: 'center', 3: 'center', 4: 'center', 5: 'center'}
+				table_instance.justify_columns = {0: 'center', 1: 'center', 2: 'center', 3: 'center', 4: 'center'}
 				print("\n")
 				print(table_instance.table)
 
@@ -128,6 +145,7 @@ def bingo():
 				
 			elif action == "RESET":
 				os.system('cls' if os.name == 'nt' else 'clear')
+				resolutioncheck()
 				printtitle()
 				df["hit"] = 0	# resets hit vector to zeros
 				df.loc[df["element"].str.contains("WILD CARD"), 'hit'] = 1	# auto hit WILD CARDs
@@ -139,7 +157,7 @@ def bingo():
 				table_instance = SingleTable(grid, "Data Mining" if int(course)==1 else "Non-linear" if int(course)==2 else "")
 				table_instance.inner_heading_row_border = False
 				table_instance.inner_row_border = True
-				table_instance.justify_columns = {0: 'center', 1: 'center', 2: 'center', 3: 'center', 4: 'center', 5: 'center'}
+				table_instance.justify_columns = {0: 'center', 1: 'center', 2: 'center', 3: 'center', 4: 'center'}
 				print("\n")
 				print(table_instance.table) 
 				continue
