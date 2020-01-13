@@ -20,7 +20,7 @@ The program also requires the following Python packages:
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+`git clone` this repository and install the above prerequisists with `pip` or your favourite package manager. Then execute the python script in the Terminal: `cd [dir]; python bingo.py`.
 
 ## Built With
 
