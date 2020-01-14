@@ -17,17 +17,21 @@ The program also requires the following Python packages:
 
 `git clone` this repository and install the above prerequisists with `pip` or your favourite package manager. Then execute the python script in the Terminal: `cd [dir]; python bingo.py`.
 
+Elemnts in the list objects should not exceed 40 alpha-numeric characters, and not contain quotation marks or apostrophes.
+
+
 ## Built With
 
 - [Sublime Text](https://www.sublimetext.com/) - The text editor used
 
 ## Future developments:
 - ~~Add Python curses window functionality to overwrite previous bingo board instead of printing a new board below every time the board is refreshed~~ Workaround done: use os.system() to clear screen instead of creating a curses window. Made compatible with both Unix and Windows systems.
-- ~~Auto hit wild cards~~ Done with issubset()
-- ~Logic when Bingo~ Done with subset()
+- ~~Auto hit wild cards~~ Done with issubset().
+- ~Logic when Bingo~ Done with subset().
 - ~Special effects when Bingo~ Done. Blinking ASCII text art in UNIX terminals; termcolor.cprint() is not supported on Windows terminals
-- ~Auto resolution check before program starts~ Done with subprocess.Popen()
-- ~Bingo special effect only flashes at first Bingo so it's less annoying~ Done
+- ~Auto resolution check before program starts~ Done with subprocess.Popen().
+- ~Bingo special effect only flashes at first Bingo so it's less annoying~ Done.
+- Add method to securely append new elements for board. Regex will be useful. 
 - Integration with Google Sheets with Google API: use Google Sheets as a repo for board elements
 - Interaction with other Bingo players; real time score updates for online players
 
