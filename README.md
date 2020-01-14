@@ -2,6 +2,8 @@
 
 This is a quick and dirty weekend project to build a Bingo game in Python 3. 
 
+![Game demo](bingo_demo.gif)
+
 ## Getting Started
 
 The program requires a terminal resolution of at least 180 characters across. If its resolution is less than 180, the program will yell at you and ask you to adjust it. 
@@ -13,7 +15,7 @@ Install the above prerequisists with `pip` or your favourite package manager.
 
 ## Deployment
 
-`git clone` this repository then execute the python script in the Terminal: `cd [dir]; python bingo.py`.
+Eecute the python script in the Terminal: `cd [dir]; python bingo.py`.
 
 Elements in the list objects should not exceed 40 alpha-numeric characters or contain quotation marks or apostrophes.
 
