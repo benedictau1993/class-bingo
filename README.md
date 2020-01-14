@@ -11,12 +11,7 @@ These instructions will get you a copy of the project up and running on your loc
 The program requires a terminal resolution of at least `180` characters across. Parse `tput cols` in the terminal to grab the width of the console window. 
 
 The program also requires the following Python packages:
-- `numpy`
-- `pandas`
-- `random`
-- `colorclass`
-- `terminaltables`
-- `termcolor`
+- `os`, `sys`, `math`, `numpy`, `pandas`, `random`, `colorclass`, `terminaltables`, `termcolor`
 
 ## Deployment
 
@@ -32,6 +27,7 @@ The program also requires the following Python packages:
 - ~Logic when Bingo~ Done with subset()
 - ~Special effects when Bingo~ Done. Blinking ASCII text art in UNIX terminals; termcolor.cprint() is not supported on Windows terminals
 - ~Auto resolution check before program starts~ Done with subprocess.Popen()
+- ~Bingo special effect only flashes at first Bingo so it's less annoying~ Done
 - Integration with Google Sheets with Google API: use Google Sheets as a repo for board elements
 - Interaction with other Bingo players; real time score updates for online players
 
@@ -45,4 +41,4 @@ This project is licensed under the MIT License.
 
 ## Acknowledgments
 
-- Hat tip to the professors of the University of Chicago Master of Science in Analytics programme for providing the inspiration for this project
+- Hat tip to the professors in the University of Chicago Master of Science in Analytics programme for providing the inspiration for this project
