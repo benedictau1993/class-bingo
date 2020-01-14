@@ -9,7 +9,7 @@ from colorclass import Color, Windows
 from terminaltables import SingleTable
 from termcolor import colored, cprint
 
-
+# Limit strings to 40 alpha-numeric characters
 datamining = ("Student visibly uncomfortable", 
 				 "Calls out someone for using buzzwords",
 				 "Still teaching at 4:31",
@@ -58,7 +58,6 @@ def resolutioncheck():	# grabs console width and checks if width > 180
 		input("Press ENTER to continue... ")
 		os.system('cls' if os.name == 'nt' else 'clear')
 
-
 def printtitle():	# prints in random color from list
 	print("\n\n\n\n\n")
 	print(Color('{}              ██████╗  ██████╗ ██╗     ██╗      █████╗ ██████╗     ██████╗ ██╗███╗   ██╗ ██████╗  ██████╗ {}'.format("{"+randcolor+"}", "{/"+randcolor+"}")))
@@ -68,27 +67,53 @@ def printtitle():	# prints in random color from list
 	print(Color('{}              ██████╔╝╚██████╔╝███████╗███████╗██║  ██║██║  ██║    ██████╔╝██║██║ ╚████║╚██████╔╝╚██████╔╝{}'.format("{"+randcolor+"}", "{/"+randcolor+"}")))
 	print(Color('{}              ╚═════╝  ╚═════╝ ╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝    ╚═════╝ ╚═╝╚═╝  ╚═══╝ ╚═════╝  ╚═════╝ {}'.format("{"+randcolor+"}", "{/"+randcolor+"}")))
 
-def printbingo():	# cprint allows flashing text in most UNIX terminals, but not Windows
-	print("\n")
-	cprint('                                   ╔═════════════════════════════════════════════════╗', 'yellow', attrs = ['blink'])
-	cprint('                                   ║                                                 ║', 'yellow', attrs = ['blink'])
-	cprint('                                   ║  ██████╗ ██╗███╗   ██╗ ██████╗  ██████╗ ██╗██╗  ║', 'yellow', attrs = ['blink'])
-	cprint('                                   ║  ██╔══██╗██║████╗  ██║██╔════╝ ██╔═══██╗██║██║  ║', 'yellow', attrs = ['blink'])
-	cprint('                                   ║  ██████╔╝██║██╔██╗ ██║██║  ███╗██║   ██║██║██║  ║', 'yellow', attrs = ['blink'])
-	cprint('                                   ║  ██╔══██╗██║██║╚██╗██║██║   ██║██║   ██║╚═╝╚═╝  ║', 'yellow', attrs = ['blink'])
-	cprint('                                   ║  ██████╔╝██║██║ ╚████║╚██████╔╝╚██████╔╝██╗██╗  ║', 'yellow', attrs = ['blink'])
-	cprint('                                   ║  ╚═════╝ ╚═╝╚═╝  ╚═══╝ ╚═════╝  ╚═════╝ ╚═╝╚═╝  ║', 'yellow', attrs = ['blink'])
-	cprint('                                   ║                                                 ║', 'yellow', attrs = ['blink'])
-	cprint('                                   ╚═════════════════════════════════════════════════╝', 'yellow', attrs = ['blink'])
+# def printbingo():	# cprint allows flashing text in most UNIX terminals, but not Windows
+# 	print("\n")
+# 	cprint('                                   ╔═════════════════════════════════════════════════╗', 'yellow', attrs = ['blink'])
+# 	cprint('                                   ║                                                 ║', 'yellow', attrs = ['blink'])
+# 	cprint('                                   ║  ██████╗ ██╗███╗   ██╗ ██████╗  ██████╗ ██╗██╗  ║', 'yellow', attrs = ['blink'])
+# 	cprint('                                   ║  ██╔══██╗██║████╗  ██║██╔════╝ ██╔═══██╗██║██║  ║', 'yellow', attrs = ['blink'])
+# 	cprint('                                   ║  ██████╔╝██║██╔██╗ ██║██║  ███╗██║   ██║██║██║  ║', 'yellow', attrs = ['blink'])
+# 	cprint('                                   ║  ██╔══██╗██║██║╚██╗██║██║   ██║██║   ██║╚═╝╚═╝  ║', 'yellow', attrs = ['blink'])
+# 	cprint('                                   ║  ██████╔╝██║██║ ╚████║╚██████╔╝╚██████╔╝██╗██╗  ║', 'yellow', attrs = ['blink'])
+# 	cprint('                                   ║  ╚═════╝ ╚═╝╚═╝  ╚═══╝ ╚═════╝  ╚═════╝ ╚═╝╚═╝  ║', 'yellow', attrs = ['blink'])
+# 	cprint('                                   ║                                                 ║', 'yellow', attrs = ['blink'])
+# 	cprint('                                   ╚═════════════════════════════════════════════════╝', 'yellow', attrs = ['blink'])
+
+def printbingo(bingo_score):	# cprint allows flashing text in most UNIX terminals, but not Windows
+	if bingo_score == 0:
+		print("\n")
+		cprint('                                   ╔═════════════════════════════════════════════════╗', 'yellow', attrs = ['blink'])
+		cprint('                                   ║                                                 ║', 'yellow', attrs = ['blink'])
+		cprint('                                   ║  ██████╗ ██╗███╗   ██╗ ██████╗  ██████╗ ██╗██╗  ║', 'yellow', attrs = ['blink'])
+		cprint('                                   ║  ██╔══██╗██║████╗  ██║██╔════╝ ██╔═══██╗██║██║  ║', 'yellow', attrs = ['blink'])
+		cprint('                                   ║  ██████╔╝██║██╔██╗ ██║██║  ███╗██║   ██║██║██║  ║', 'yellow', attrs = ['blink'])
+		cprint('                                   ║  ██╔══██╗██║██║╚██╗██║██║   ██║██║   ██║╚═╝╚═╝  ║', 'yellow', attrs = ['blink'])
+		cprint('                                   ║  ██████╔╝██║██║ ╚████║╚██████╔╝╚██████╔╝██╗██╗  ║', 'yellow', attrs = ['blink'])
+		cprint('                                   ║  ╚═════╝ ╚═╝╚═╝  ╚═══╝ ╚═════╝  ╚═════╝ ╚═╝╚═╝  ║', 'yellow', attrs = ['blink'])
+		cprint('                                   ║                                                 ║', 'yellow', attrs = ['blink'])
+		cprint('                                   ╚═════════════════════════════════════════════════╝', 'yellow', attrs = ['blink'])
+		return (bingo_score + 1)
+
+	else:
+		print("\n")
+		print(Color('{yellow}                                   ╔═════════════════════════════════════════════════╗{/yellow}'))
+		print(Color('{yellow}                                   ║                                                 ║{/yellow}'))
+		print(Color('{yellow}                                   ║  ██████╗ ██╗███╗   ██╗ ██████╗  ██████╗ ██╗██╗  ║{/yellow}'))
+		print(Color('{yellow}                                   ║  ██╔══██╗██║████╗  ██║██╔════╝ ██╔═══██╗██║██║  ║{/yellow}'))
+		print(Color('{yellow}                                   ║  ██████╔╝██║██╔██╗ ██║██║  ███╗██║   ██║██║██║  ║{/yellow}'))
+		print(Color('{yellow}                                   ║  ██╔══██╗██║██║╚██╗██║██║   ██║██║   ██║╚═╝╚═╝  ║{/yellow}'))
+		print(Color('{yellow}                                   ║  ██████╔╝██║██║ ╚████║╚██████╔╝╚██████╔╝██╗██╗  ║{/yellow}'))
+		print(Color('{yellow}                                   ║  ╚═════╝ ╚═╝╚═╝  ╚═══╝ ╚═════╝  ╚═════╝ ╚═╝╚═╝  ║{/yellow}'))
+		print(Color('{yellow}                                   ║                                                 ║{/yellow}'))
+		print(Color('{yellow}                                   ╚═════════════════════════════════════════════════╝{/yellow}'))
 
 def bingo():
+	global bingo_score
+	bingo_score = 0
 	os.system('cls' if os.name == 'nt' else 'clear')
 	resolutioncheck()
 	printtitle()
-	input("\n\n\n\n                                                   Press ENTER to continue... ")
-	os.system('cls' if os.name == 'nt' else 'clear')
-	resolutioncheck()
-	printtitle()	
 	course = input("\n\n\n\nFor which course would you like to play Bingo? Enter 1 for Data Mining, 2 for Non-linear. Enter QUIT to leave the application:  ")
 	if course.isdigit() and int(course) in winterclasses: 
 		dim = min(math.floor(math.sqrt(len(winterclasses[int(course)]))), 4)	# dimension of the bingo board, maximum is 4x4
@@ -135,10 +160,10 @@ def bingo():
 				print(table_instance.table)
 
 				if dim == 3 and any([set(i).issubset(set(df[df['hit']==1]["id"].tolist())) for i in bingo3]):	# if Bingo then print flashing bingo message
-					printbingo()
+					bingo_score = printbingo(bingo_score)
 
 				elif dim == 4 and any([set(i).issubset(set(df[df['hit']==1]["id"].tolist())) for i in bingo4]):
-					printbingo()
+					bingo_score = printbingo(bingo_score)
 
 				else:
 					continue
@@ -147,6 +172,7 @@ def bingo():
 				os.system('cls' if os.name == 'nt' else 'clear')
 				resolutioncheck()
 				printtitle()
+				bingo_score = 0
 				df["hit"] = 0	# resets hit vector to zeros
 				df.loc[df["element"].str.contains("WILD CARD"), 'hit'] = 1	# auto hit WILD CARDs
 				df['output'] = "Color('{}" + df["element"].astype(str) + """{}'.format("{autoblack}", "{/autoblack}"))"""		# hence all items should be in blue
@@ -181,6 +207,8 @@ def bingo():
 
 	else:
 		print("Sorry, what you entered was not in range. ")
+		cprint('\n\n\n\n                                              Press ENTER to continue... ', 'yellow', attrs = ['blink'])
+		input("")
 		bingo()
 
 def main():
