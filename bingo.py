@@ -1,10 +1,11 @@
 import os
 import sys
 import math
-import numpy as np
-import pandas as pd
 import random
 import subprocess
+
+import numpy as np
+import pandas as pd
 from colorclass import Color, Windows
 from terminaltables import SingleTable
 from termcolor import colored, cprint
@@ -153,7 +154,6 @@ def bingo():
 				elif dim == 4 and any([set(i).issubset(set(df[df['hit']==1]["id"].tolist())) for i in bingo4]):	# if Bingo then print flashing bingo message
 					bingo_score = printbingo(bingo_score)	# return the value, and assign/overwrite it outside the function:
 
-
 				else:
 					continue
 				
@@ -195,8 +195,8 @@ def bingo():
 		sys.exit(0)
 
 	else:
-		print("Sorry, what you entered was not in range. ")
-		cprint('\n\n\n\n                                              Press ENTER to continue... ', 'yellow', attrs = ['blink'])
+		print("\n\n                                     Sorry, what you entered was not in range. ")
+		cprint('\n\n                                              Press ENTER to continue... ', 'yellow', attrs = ['blink'])
 		input("")
 		bingo()
 
