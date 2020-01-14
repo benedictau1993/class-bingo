@@ -17,8 +17,7 @@ The program also requires the following Python packages:
 
 `git clone` this repository and install the above prerequisists with `pip` or your favourite package manager. Then execute the python script in the Terminal: `cd [dir]; python bingo.py`.
 
-Elemnts in the list objects should not exceed 40 alpha-numeric characters, and not contain quotation marks or apostrophes.
-
+Elements in the list objects should not exceed 40 alpha-numeric characters, and not contain quotation marks or apostrophes.
 
 ## Built With
 
