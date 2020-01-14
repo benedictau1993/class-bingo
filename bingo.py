@@ -9,7 +9,7 @@ from colorclass import Color, Windows
 from terminaltables import SingleTable
 from termcolor import colored, cprint
 
-# Limit strings to 40 alpha-numeric characters
+# Elements in the list objects should not exceed 40 alpha-numeric characters, and not contain quotation marks or apostrophes.
 datamining = ("Student visibly uncomfortable", 
 				 "Calls out someone for using buzzwords",
 				 "Still teaching at 4:31",
@@ -67,19 +67,6 @@ def printtitle():	# prints in random color from list
 	print(Color('{}              ██████╔╝╚██████╔╝███████╗███████╗██║  ██║██║  ██║    ██████╔╝██║██║ ╚████║╚██████╔╝╚██████╔╝{}'.format("{"+randcolor+"}", "{/"+randcolor+"}")))
 	print(Color('{}              ╚═════╝  ╚═════╝ ╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝    ╚═════╝ ╚═╝╚═╝  ╚═══╝ ╚═════╝  ╚═════╝ {}'.format("{"+randcolor+"}", "{/"+randcolor+"}")))
 
-# def printbingo():	# cprint allows flashing text in most UNIX terminals, but not Windows
-# 	print("\n")
-# 	cprint('                                   ╔═════════════════════════════════════════════════╗', 'yellow', attrs = ['blink'])
-# 	cprint('                                   ║                                                 ║', 'yellow', attrs = ['blink'])
-# 	cprint('                                   ║  ██████╗ ██╗███╗   ██╗ ██████╗  ██████╗ ██╗██╗  ║', 'yellow', attrs = ['blink'])
-# 	cprint('                                   ║  ██╔══██╗██║████╗  ██║██╔════╝ ██╔═══██╗██║██║  ║', 'yellow', attrs = ['blink'])
-# 	cprint('                                   ║  ██████╔╝██║██╔██╗ ██║██║  ███╗██║   ██║██║██║  ║', 'yellow', attrs = ['blink'])
-# 	cprint('                                   ║  ██╔══██╗██║██║╚██╗██║██║   ██║██║   ██║╚═╝╚═╝  ║', 'yellow', attrs = ['blink'])
-# 	cprint('                                   ║  ██████╔╝██║██║ ╚████║╚██████╔╝╚██████╔╝██╗██╗  ║', 'yellow', attrs = ['blink'])
-# 	cprint('                                   ║  ╚═════╝ ╚═╝╚═╝  ╚═══╝ ╚═════╝  ╚═════╝ ╚═╝╚═╝  ║', 'yellow', attrs = ['blink'])
-# 	cprint('                                   ║                                                 ║', 'yellow', attrs = ['blink'])
-# 	cprint('                                   ╚═════════════════════════════════════════════════╝', 'yellow', attrs = ['blink'])
-
 def printbingo(bingo_score):	# cprint allows flashing text in most UNIX terminals, but not Windows
 	if bingo_score == 0:
 		print("\n")
@@ -93,7 +80,7 @@ def printbingo(bingo_score):	# cprint allows flashing text in most UNIX terminal
 		cprint('                                   ║  ╚═════╝ ╚═╝╚═╝  ╚═══╝ ╚═════╝  ╚═════╝ ╚═╝╚═╝  ║', 'yellow', attrs = ['blink'])
 		cprint('                                   ║                                                 ║', 'yellow', attrs = ['blink'])
 		cprint('                                   ╚═════════════════════════════════════════════════╝', 'yellow', attrs = ['blink'])
-		return (bingo_score + 1)
+		return (bingo_score + 1)	# return the value, and assign/overwrite it outside the function
 
 	else:
 		print("\n")
@@ -160,10 +147,12 @@ def bingo():
 				print(table_instance.table)
 
 				if dim == 3 and any([set(i).issubset(set(df[df['hit']==1]["id"].tolist())) for i in bingo3]):	# if Bingo then print flashing bingo message
-					bingo_score = printbingo(bingo_score)
+					bingo_score = printbingo(bingo_score)	# return the value, and assign/overwrite it outside the function:
+
 
 				elif dim == 4 and any([set(i).issubset(set(df[df['hit']==1]["id"].tolist())) for i in bingo4]):
-					bingo_score = printbingo(bingo_score)
+					bingo_score = printbingo(bingo_score)	# return the value, and assign/overwrite it outside the function:
+
 
 				else:
 					continue
