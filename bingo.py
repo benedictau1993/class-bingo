@@ -41,7 +41,7 @@ nonlinear = ("Is everyone finished? (no response)",
 winterclasses = {1: datamining, 2: nonlinear}
 
 bingo3 = ({1,2,3}, {4,5,6}, {7,8,9}, {1,4,7}, {2,5,8}, {3,6,9}, {1,5,9}, {3,5,7})
-bingo4 = ({1,2,3,4}, {5,6,7,8}, {9,10,11,12}, {13,14,15,16}, {1,5,9,13}, {2,6,10,14}, {3,7,11,15}, {4,8,12,16})
+bingo4 = ({1,2,3,4}, {5,6,7,8}, {9,10,11,12}, {13,14,15,16}, {1,5,9,13}, {2,6,10,14}, {3,7,11,15}, {4,8,12,16}, {1,6,11,16}, {4,7,10,13})
 
 colors = ("autoblack", "autored", "autogreen", "autoyellow", "autoblue", "automagenta", "autocyan", "autowhite")
 randcolor = random.choice(colors)
@@ -67,8 +67,8 @@ def printtitle():	# prints in random color from list
 	print(Color('{}              ██████╔╝╚██████╔╝███████╗███████╗██║  ██║██║  ██║    ██████╔╝██║██║ ╚████║╚██████╔╝╚██████╔╝{}'.format("{"+randcolor+"}", "{/"+randcolor+"}")))
 	print(Color('{}              ╚═════╝  ╚═════╝ ╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝    ╚═════╝ ╚═╝╚═╝  ╚═══╝ ╚═════╝  ╚═════╝ {}'.format("{"+randcolor+"}", "{/"+randcolor+"}")))
 
-def printbingo(bingo_score):	# cprint allows flashing text in most UNIX terminals, but not Windows
-	if bingo_score == 0:
+def printbingo(bingo_score):	# cprint() allows flashing text in most UNIX terminals, but not Windows
+	if bingo_score == 0:		# flashes during intial Bingo only
 		print("\n")
 		cprint('                                   ╔═════════════════════════════════════════════════╗', 'yellow', attrs = ['blink'])
 		cprint('                                   ║                                                 ║', 'yellow', attrs = ['blink'])
@@ -82,7 +82,7 @@ def printbingo(bingo_score):	# cprint allows flashing text in most UNIX terminal
 		cprint('                                   ╚═════════════════════════════════════════════════╝', 'yellow', attrs = ['blink'])
 		return (bingo_score + 1)	# return the value, and assign/overwrite it outside the function
 
-	else:
+	else:						# stops flashing after intial Bingo so it's less annoying to user
 		print("\n")
 		print(Color('{yellow}                                   ╔═════════════════════════════════════════════════╗{/yellow}'))
 		print(Color('{yellow}                                   ║                                                 ║{/yellow}'))
@@ -133,7 +133,7 @@ def bingo():
 				resolutioncheck()
 				printtitle()
 				df.loc[df.id == int(action), "hit"] = df.loc[df.id == int(action), "hit"].replace({0:1, 1:0})	# switches 0 <-> 1 if item has been hit/unhit
-				df['output'] = "Color('{}" + df["element"].astype(str) + """{}'.format("{autoblack}", "{/autoblack}"))"""		# any item that hasn't been hit is showed in blue
+				df['output'] = "Color('{}" + df["element"].astype(str) + """{}'.format("{autoblack}", "{/autoblack}"))"""		# any item that hasn't been hit is showed in black
 				df.loc[df["element"].str.contains("WILD CARD"), 'hit'] = 1	# auto hit WILD CARDs
 				df.loc[df.hit == 1,'output'] = "Color('{}" + df.loc[df.hit == 1, "element"].astype(str) + """{}'.format("{autogreen}", "{/autogreen}"))"""				# any item that has been hit is showed in green
 				array = df["output"].tolist()
@@ -150,7 +150,7 @@ def bingo():
 					bingo_score = printbingo(bingo_score)	# return the value, and assign/overwrite it outside the function:
 
 
-				elif dim == 4 and any([set(i).issubset(set(df[df['hit']==1]["id"].tolist())) for i in bingo4]):
+				elif dim == 4 and any([set(i).issubset(set(df[df['hit']==1]["id"].tolist())) for i in bingo4]):	# if Bingo then print flashing bingo message
 					bingo_score = printbingo(bingo_score)	# return the value, and assign/overwrite it outside the function:
 
 
@@ -164,7 +164,7 @@ def bingo():
 				bingo_score = 0
 				df["hit"] = 0	# resets hit vector to zeros
 				df.loc[df["element"].str.contains("WILD CARD"), 'hit'] = 1	# auto hit WILD CARDs
-				df['output'] = "Color('{}" + df["element"].astype(str) + """{}'.format("{autoblack}", "{/autoblack}"))"""		# hence all items should be in blue
+				df['output'] = "Color('{}" + df["element"].astype(str) + """{}'.format("{autoblack}", "{/autoblack}"))"""		# hence all items should be in black
 				df.loc[df.hit == 1,'output'] = "Color('{}" + df.loc[df.hit == 1, "element"].astype(str) + """{}'.format("{autogreen}", "{/autogreen}"))"""	# any item that has been hit is showed in green
 				array = df["output"].tolist()
 				array = [eval(x) for x in array]
