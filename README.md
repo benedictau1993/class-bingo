@@ -30,7 +30,7 @@ Elements in the list objects should not exceed 40 alpha-numeric characters or co
 - ~Special effects when Bingo~ **Done. Blinking ASCII text art in UNIX terminals; however termcolor.cprint() is not supported on Windows terminals.**
 - ~Auto resolution check before program starts~ **Done with subprocess.Popen().**
 - ~Bingo special effect only flashes at first Bingo so it's less annoying~ **Done.**
-- Add auto pip install missing packages: **this would be cool but a kitten would die whenever somebody uses `import pip` in code as a workaround for proper packaging**
+- ~Add auto pip install missing packages~  **Done with try-except-os.system().**
 - Add method to securely add and store new elements for board. Perhaps in a separate file. Regex will be useful. 
 - Integration with Google Sheets with Google API: use Google Sheets as a repo for board elements
 - Interaction with other Bingo players; real time score updates for online players
