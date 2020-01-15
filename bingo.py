@@ -4,11 +4,55 @@ import math
 import random
 import subprocess
 
-import numpy as np
-import pandas as pd
-from colorclass import Color, Windows
-from terminaltables import SingleTable
-from termcolor import colored, cprint
+try:
+	import numpy as np
+except ModuleNotFoundError:
+	resp = input("Package NumPy is not installed. Would you like to install it using pip? Enter YES, or the program will exit.")
+	if resp == "YES":
+		os.system('pip install numpy')
+	else:
+		print("Please install numpy before executing this program. ")
+		sys.exit(0)
+
+try:
+	import pandas as np
+except ModuleNotFoundError:
+	resp = input("Package pandas is not installed. Would you like to install it using pip? Enter YES, or the program will exit.")
+	if resp == "YES":
+		os.system('pip install pandas')
+	else:
+		print("Please install pandas before executing this program. ")
+		sys.exit(0)
+
+try:
+	from colorclass import Color, Windows
+except ModuleNotFoundError:
+	resp = input("Package colorclass is not installed. Would you like to install it using pip? Enter YES, or the program will exit.")
+	if resp == "YES":
+		os.system('pip install colorclass')
+	else:
+		print("Please install colorclass before executing this program. ")
+		sys.exit(0)
+
+try:
+	from terminaltables import SingleTable
+except ModuleNotFoundError:
+	resp = input("Package terminaltables is not installed. Would you like to install it using pip? Enter YES, or the program will exit.")
+	if resp == "YES":
+		os.system('pip install terminaltables')
+	else:
+		print("Please install terminaltables before executing this program. ")
+		sys.exit(0)
+
+try:
+	from termcolor import colored, cprint
+except ModuleNotFoundError:
+	resp = input("Package termcolor is not installed. Would you like to install it using pip? Enter YES, or the program will exit.")
+	if resp == "YES":
+		os.system('pip install termcolor')
+	else:
+		print("Please install termcolor before executing this program. ")
+		sys.exit(0)
 
 # Elements in the list objects should not exceed 40 alpha-numeric characters, and not contain quotation marks or apostrophes.
 datamining = ("Student visibly uncomfortable", 
