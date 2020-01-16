@@ -6,53 +6,33 @@ import subprocess
 
 try:
 	import numpy as np
-except ModuleNotFoundError:
-	resp = input("Package NumPy is not installed. Would you like to install it using pip? Enter YES, or the program will exit.")
-	if resp == "YES":
-		os.system('pip install numpy')
-	else:
-		print("Please install numpy before executing this program. ")
-		sys.exit(0)
+except (ImportError, ModuleNotFoundError):
+	print("Please install the Python package NumPy before executing this program. This program will now exit.")
+	sys.exit(0)
 
 try:
-	import pandas as np
-except ModuleNotFoundError:
-	resp = input("Package pandas is not installed. Would you like to install it using pip? Enter YES, or the program will exit.")
-	if resp == "YES":
-		os.system('pip install pandas')
-	else:
-		print("Please install pandas before executing this program. ")
-		sys.exit(0)
+	import pandas as pd
+except (ImportError, ModuleNotFoundError):
+	print("Please install the Python package pandas before executing this program. This program will now exit.")
+	sys.exit(0)
 
 try:
 	from colorclass import Color, Windows
-except ModuleNotFoundError:
-	resp = input("Package colorclass is not installed. Would you like to install it using pip? Enter YES, or the program will exit.")
-	if resp == "YES":
-		os.system('pip install colorclass')
-	else:
-		print("Please install colorclass before executing this program. ")
-		sys.exit(0)
+except (ImportError, ModuleNotFoundError):
+	print("Please install the Python package colorclass before executing this program. This program will now exit.")
+	sys.exit(0)
 
 try:
 	from terminaltables import SingleTable
-except ModuleNotFoundError:
-	resp = input("Package terminaltables is not installed. Would you like to install it using pip? Enter YES, or the program will exit.")
-	if resp == "YES":
-		os.system('pip install terminaltables')
-	else:
-		print("Please install terminaltables before executing this program. ")
-		sys.exit(0)
+except (ImportError, ModuleNotFoundError):
+	print("Please install the Python package terminaltables before executing this program. This program will now exit.")
+	sys.exit(0)
 
 try:
 	from termcolor import colored, cprint
-except ModuleNotFoundError:
-	resp = input("Package termcolor is not installed. Would you like to install it using pip? Enter YES, or the program will exit.")
-	if resp == "YES":
-		os.system('pip install termcolor')
-	else:
-		print("Please install termcolor before executing this program. ")
-		sys.exit(0)
+except (ImportError, ModuleNotFoundError):
+	print("Please install the Python package termcolor before executing this program. This program will now exit.")
+	sys.exit(0)
 
 # Elements in the list objects should not exceed 40 alpha-numeric characters, and not contain quotation marks or apostrophes.
 datamining = ("Student visibly uncomfortable", 
@@ -88,7 +68,7 @@ winterclasses = {1: datamining, 2: nonlinear}
 bingo3 = ({1,2,3}, {4,5,6}, {7,8,9}, {1,4,7}, {2,5,8}, {3,6,9}, {1,5,9}, {3,5,7})
 bingo4 = ({1,2,3,4}, {5,6,7,8}, {9,10,11,12}, {13,14,15,16}, {1,5,9,13}, {2,6,10,14}, {3,7,11,15}, {4,8,12,16}, {1,6,11,16}, {4,7,10,13})
 
-colors = ("autoblack", "autored", "autogreen", "autoyellow", "autoblue", "automagenta", "autocyan", "autowhite")
+colors = ("autoblack", "autored", "autogreen", "autoblue", "automagenta", "autocyan", "autowhite")
 randcolor = random.choice(colors)
 
 def resolutioncheck():	# grabs console width and checks if width > 180
@@ -129,16 +109,16 @@ def printbingo(bingo_score):	# cprint() allows flashing text in most UNIX termin
 
 	else:						# stops flashing after intial Bingo so it's less annoying to user
 		print("\n")
-		print(Color('{yellow}                                   ╔═════════════════════════════════════════════════╗{/yellow}'))
-		print(Color('{yellow}                                   ║                                                 ║{/yellow}'))
-		print(Color('{yellow}                                   ║  ██████╗ ██╗███╗   ██╗ ██████╗  ██████╗ ██╗██╗  ║{/yellow}'))
-		print(Color('{yellow}                                   ║  ██╔══██╗██║████╗  ██║██╔════╝ ██╔═══██╗██║██║  ║{/yellow}'))
-		print(Color('{yellow}                                   ║  ██████╔╝██║██╔██╗ ██║██║  ███╗██║   ██║██║██║  ║{/yellow}'))
-		print(Color('{yellow}                                   ║  ██╔══██╗██║██║╚██╗██║██║   ██║██║   ██║╚═╝╚═╝  ║{/yellow}'))
-		print(Color('{yellow}                                   ║  ██████╔╝██║██║ ╚████║╚██████╔╝╚██████╔╝██╗██╗  ║{/yellow}'))
-		print(Color('{yellow}                                   ║  ╚═════╝ ╚═╝╚═╝  ╚═══╝ ╚═════╝  ╚═════╝ ╚═╝╚═╝  ║{/yellow}'))
-		print(Color('{yellow}                                   ║                                                 ║{/yellow}'))
-		print(Color('{yellow}                                   ╚═════════════════════════════════════════════════╝{/yellow}'))
+		print(Color('{yellow}                                   ╔══════════════════════════════════════════════════╗{/yellow}'))
+		print(Color('{yellow}                                   ║                                                  ║{/yellow}'))
+		print(Color('{yellow}                                   ║  ██████╗ ██╗███╗   ██╗ ██████╗  ██████╗ ██╗██╗   ║{/yellow}'))
+		print(Color('{yellow}                                   ║  ██╔══██╗██║████╗  ██║██╔════╝ ██╔═══██╗██║██║   ║{/yellow}'))
+		print(Color('{yellow}                                   ║  ██████╔╝██║██╔██╗ ██║██║  ███╗██║   ██║██║██║   ║{/yellow}'))
+		print(Color('{yellow}                                   ║  ██╔══██╗██║██║╚██╗██║██║   ██║██║   ██║╚═╝╚═╝   ║{/yellow}'))
+		print(Color('{yellow}                                   ║  ██████╔╝██║██║ ╚████║╚██████╔╝╚██████╔╝██╗██╗   ║{/yellow}'))
+		print(Color('{yellow}                                   ║  ╚═════╝ ╚═╝╚═╝  ╚═══╝ ╚═════╝  ╚═════╝ ╚═╝╚═╝   ║{/yellow}'))
+		print(Color('{yellow}                                   ║                                                  ║{/yellow}'))
+		print(Color('{yellow}                                   ╚══════════════════════════════════════════════════╝{/yellow}'))
 
 def bingo():
 	global bingo_score
@@ -201,7 +181,7 @@ def bingo():
 				else:
 					continue
 				
-			elif action == "RESET":
+			elif action.upper() == "RESET":
 				os.system('cls' if os.name == 'nt' else 'clear')
 				resolutioncheck()
 				printtitle()
@@ -221,10 +201,10 @@ def bingo():
 				print(table_instance.table) 
 				continue
 				
-			elif action == "RESTART":
+			elif action.upper() == "RESTART":
 				break
 			
-			elif action == "QUIT":
+			elif action.upper() == "QUIT":
 				os.system('cls' if os.name == 'nt' else 'clear')
 				sys.exit(0)		# exits the program so no need for ^C keyboardinterrupt
 
@@ -234,7 +214,7 @@ def bingo():
 		
 		bingo()
 		
-	elif course == "QUIT":
+	elif course.upper() == "QUIT":
 		os.system('cls' if os.name == 'nt' else 'clear')
 		sys.exit(0)
 
